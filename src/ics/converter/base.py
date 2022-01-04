@@ -235,7 +235,7 @@ def unwrap_type(attr_type: Type) -> Tuple[Optional[Type[MutableSequence]], Type,
         See the respective attributes of `AttributeConverter` for their meaning.
     """
     generic_origin = getattr(attr_type, "__origin__", attr_type)
-    generic_vars = getattr(attr_type, "__args__", tuple())
+    generic_vars = getattr(attr_type, "__args__", tuple())  # type: ignore
 
     if generic_origin == Union:
         generic_vars = [v for v in generic_vars if v not in NoneTypes]
